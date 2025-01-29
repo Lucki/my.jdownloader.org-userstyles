@@ -1,0 +1,74 @@
+@-moz-document regexp("https:\\/\\/my\\.jdownloader\\.org\\/(?:index\\.html)?\\?deviceId=.*#webinterface:downloads") {
+:root {
+    --width-size: 110px;
+    --width-hoster: 60px;
+    --width-status: 150px;
+    --width-progress: 150px;
+    --width-progress-bar: 100px;
+}
+
+.contentContainer {
+    width: 100%;
+}
+
+.listHeadingWrapper {
+    width: 100%;
+}
+
+.listHeader[style="display: block;"] {
+    display: grid !important;
+    /* downloads */
+    grid-template-columns: 60px auto var(--width-size) var(--width-hoster) var(--width-status) var(--width-progress) var(--width-progress-bar) 18px 18px;
+}
+
+.listRow > div {
+    display: grid;
+    /* downloads */
+    grid-template-columns: 60px auto var(--width-size) var(--width-hoster) var(--width-status) var(--width-progress) var(--width-progress-bar) 18px 18px;
+}
+
+.listRow > div > div {
+    width: 100% !important;
+}
+
+.mainnav {
+    width: 100%;
+}
+}
+
+@-moz-document regexp("https:\\/\\/my\\.jdownloader\\.org\\/(?:index\\.html)?\\?deviceId=.*#webinterface:links") {
+:root {
+    --width-target: 400px;
+    --width-size: 120px;
+    --width-hoster: 60px;
+    --width-status: 100px;
+}
+
+.contentContainer {
+    width: 100%;
+}
+
+.listHeadingWrapper {
+    width: 100%;
+}
+
+.listHeader[style="display: block;"] {
+    display: grid !important;
+    /* link collector */
+    grid-template-columns: 60px auto var(--width-target) var(--width-size) var(--width-hoster) var(--width-status) 18px 18px;
+}
+
+.listRow > div {
+    display: grid;
+    /* link collector */
+    grid-template-columns: 60px auto var(--width-target) var(--width-size) var(--width-hoster) var(--width-status) 18px 18px;
+}
+
+.listRow > div > div {
+    width: 100% !important;
+}
+
+.mainnav {
+    width: 100%;
+}
+}
