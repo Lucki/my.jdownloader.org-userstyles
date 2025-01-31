@@ -1,18 +1,65 @@
 /* ==UserStyle==
 @name           My.JDownloader.org full width
 @namespace      my.jdownloader.org
-@version        1.0.0
+@version        1.0.1
 @description    Expands the lists to use the full available page width on widescreen displays.
 @author         Lucki
 ==/UserStyle== */
 
-@-moz-document regexp("https:\\/\\/my\\.jdownloader\\.org\\/(?:index\\.html)?\\?deviceId=.*#webinterface:downloads") {
+@-moz-document regexp("^https:\\/\\/my\\.jdownloader\\.org\\/.*\\?deviceId=[0-9a-f]+#webinterface:downloads$") {
     :root {
-        --width-size: 110px;
-        --width-hoster: 60px;
-        --width-status: 150px;
-        --width-progress: 150px;
-        --width-progress-bar: 100px;
+        --width-expand-button: 55px; /* less looks too cramped together */
+        --width-name: minmax(500px, auto);
+        --width-size: 100px; /* minimal value possible (~93px) + small margin to hoster icons */
+        --width-hoster: 59px; /* minimal value possible */
+        --width-status: 90px; /* 4 icons + small margin to hoster icons*/
+        --width-progress: minmax(150px, min-content);
+        --width-progress-bar: minmax(100px, 0.5fr);
+        --width-priority-icon: 17px; /* minmal value possible */
+        --width-stop-marker: 23px; /* minmal value possible (17px) + right margin */
+    }
+
+    .listHeader[style="display: block;"] {
+        display: grid !important;
+        grid-template-columns: /* 9 columns */
+            var(--width-expand-button)
+            var(--width-name)
+            var(--width-size)
+            var(--width-hoster)
+            var(--width-status)
+            var(--width-progress)
+            var(--width-progress-bar)
+            var(--width-priority-icon)
+            var(--width-stop-marker);
+    }
+
+    #gwtContent > div > div > div > div > div:has(> .listRow) {
+        display: grid;
+        grid-auto-columns: /* 9 columns */
+            var(--width-expand-button)
+            var(--width-name)
+            var(--width-size)
+            var(--width-hoster)
+            var(--width-status)
+            var(--width-progress)
+            var(--width-progress-bar)
+            var(--width-priority-icon)
+            var(--width-stop-marker);
+
+        /*  each row is a subgrid and inheriting the parent grid layout -
+            this allows columns to adapt to other rows length
+        */
+        > .listRow {
+            grid-column: span 9;
+
+            display: grid;
+            grid-template-columns: subgrid;
+
+            /* ignore the html style tags and use the child directly */
+            > div {
+                display: contents;
+            }
+        }
     }
 
     .contentContainer {
@@ -21,18 +68,6 @@
 
     .listHeadingWrapper {
         width: 100%;
-    }
-
-    .listHeader[style="display: block;"] {
-        display: grid !important;
-        /* downloads */
-        grid-template-columns: 60px auto var(--width-size) var(--width-hoster) var(--width-status) var(--width-progress) var(--width-progress-bar) 18px 18px;
-    }
-
-    .listRow > div {
-        display: grid;
-        /* downloads */
-        grid-template-columns: 60px auto var(--width-size) var(--width-hoster) var(--width-status) var(--width-progress) var(--width-progress-bar) 18px 18px;
     }
 
     .listRow > div > div {
@@ -44,12 +79,57 @@
     }
 }
 
-@-moz-document regexp("https:\\/\\/my\\.jdownloader\\.org\\/(?:index\\.html)?\\?deviceId=.*#webinterface:links") {
+@-moz-document regexp("^https:\\/\\/my\\.jdownloader\\.org\\/.*\\?deviceId=[0-9a-f]+#webinterface:links$") {
     :root {
-        --width-target: 400px;
-        --width-size: 120px;
-        --width-hoster: 60px;
+        --width-expand-button: 55px; /* less looks too cramped together */
+        --width-name: minmax(500px, auto);
+        --width-target: minmax(400px, auto);
+        --width-size: 100px;
+        --width-hoster: 59px; /* minimal value possible */
         --width-status: 100px;
+        --width-priority-icon: 17px; /* minmal value possible */
+        --width-unknown: 17px;
+    }
+
+    .listHeader[style="display: block;"] {
+        display: grid !important;
+        grid-template-columns: /* 8 columns */
+            var(--width-expand-button)
+            var(--width-name)
+            var(--width-target)
+            var(--width-size)
+            var(--width-hoster)
+            var(--width-status)
+            var(--width-priority-icon)
+            var(--width-unknown);
+    }
+
+    #gwtContent > div > div > div > div > div:has(> .listRow) {
+        display: grid;
+        grid-auto-columns: /* 8 columns */
+            var(--width-expand-button)
+            var(--width-name)
+            var(--width-target)
+            var(--width-size)
+            var(--width-hoster)
+            var(--width-status)
+            var(--width-priority-icon)
+            var(--width-unknown);
+
+        /*  each row is a subgrid and inheriting the parent grid layout -
+            this allows columns to adapt to other rows length
+        */
+        > .listRow {
+            grid-column: span 8;
+
+            display: grid;
+            grid-template-columns: subgrid;
+
+            /* ignore the html style tags and use the child directly */
+            > div {
+                display: contents;
+            }
+        }
     }
 
     .contentContainer {
@@ -58,18 +138,6 @@
 
     .listHeadingWrapper {
         width: 100%;
-    }
-
-    .listHeader[style="display: block;"] {
-        display: grid !important;
-        /* link collector */
-        grid-template-columns: 60px auto var(--width-target) var(--width-size) var(--width-hoster) var(--width-status) 18px 18px;
-    }
-
-    .listRow > div {
-        display: grid;
-        /* link collector */
-        grid-template-columns: 60px auto var(--width-target) var(--width-size) var(--width-hoster) var(--width-status) 18px 18px;
     }
 
     .listRow > div > div {
