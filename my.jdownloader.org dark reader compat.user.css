@@ -1,0 +1,61 @@
+/* ==UserStyle==
+@name           My.JDownlaoder.org Dark Reader compat
+@namespace      my.jdownloader.org
+@version        1.0.0
+@description    Style changes to be compatible with the Dark Reader extension
+@author         Lucki
+==/UserStyle== */
+
+@-moz-document regexp("^https:\\/\\/my\\.jdownloader\\.org\\/.*#webinterface:(downloads|links)$") {
+    :root {
+        --color-enabled: black;
+        --color-disabled: #ff9100;
+        --color-hover-enabled: white;
+    }
+
+    #gwtContent {
+        color: var(--color-enabled);
+        text-shadow: none;
+    }
+
+    .expandButton {
+        color: var(--color-enabled);
+    }
+
+    .listRow.rowSelected {
+        color: var(--color-hover-enabled);
+
+        .expandButton {
+            color: var(--color-hover-enabled);
+        }
+    }
+
+    .listRow:hover {
+        color: var(--color-hover-enabled);
+        
+        .expandButton {
+            color: var(--color-hover-enabled);
+        }
+    }
+
+    .listRowDisabled, .listRowDisabled:hover, .listRowDisabled.rowSelected {
+        color: var(--color-disabled);
+        text-shadow: none;
+
+        .expandButton {
+            color: var(--color-disabled);
+        }
+    }
+
+    .contextMenu a {
+        color: var(--color-enabled);
+        text-shadow: none;
+        font-weight: 100;
+    }
+
+    .contextMenu a:hover {
+        color: var(--color-hover-enabled);
+        text-shadow: none;
+        font-weight: 100;
+    }
+}
