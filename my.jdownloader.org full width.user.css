@@ -10,7 +10,7 @@
     :root {
         --width-expand-button: 55px; /* less looks too cramped together */
         --width-name: minmax(500px, auto);
-        --width-size: 100px; /* minimal value possible (~93px) + small margin to hoster icons */
+        --width-size: 101px; /* minimal value possible (~94px) + small margin to hoster icons */
         --width-hoster: 59px; /* minimal value possible */
         --width-status: 90px; /* 4 icons + small margin to hoster icons*/
         --width-progress: minmax(150px, min-content);
