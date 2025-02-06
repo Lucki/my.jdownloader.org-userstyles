@@ -1,12 +1,12 @@
 /* ==UserStyle==
 @name           My.JDownloader.org Dark Reader compat
 @namespace      my.jdownloader.org
-@version        1.0.0
+@version        1.1.0
 @description    Style changes to be compatible with the Dark Reader extension
 @author         Lucki
 ==/UserStyle== */
 
-@-moz-document regexp("^https:\\/\\/my\\.jdownloader\\.org\\/.*#webinterface:(downloads|links)$") {
+@-moz-document regexp("^https:\\/\\/my\\.jdownloader\\.org\\/.*#webinterface:(downloads|links|settings:.*)$") {
     :root {
         --color-enabled: black;
         --color-disabled: #ff9100;
@@ -32,13 +32,15 @@
 
     .listRow:hover {
         color: var(--color-hover-enabled);
-        
+
         .expandButton {
             color: var(--color-hover-enabled);
         }
     }
 
-    .listRowDisabled, .listRowDisabled:hover, .listRowDisabled.rowSelected {
+    .listRowDisabled,
+    .listRowDisabled:hover,
+    .listRowDisabled.rowSelected {
         color: var(--color-disabled);
         text-shadow: none;
 
@@ -57,5 +59,36 @@
         color: var(--color-hover-enabled);
         text-shadow: none;
         font-weight: 100;
+    }
+
+    /** settings page **/
+    /* side panel links */
+    a {
+        color: var(--color-enabled);
+    }
+    a:hover {
+        color: var(--color-hover-enabled);
+    }
+
+    /* side panel links deactivated */
+    .GHS0TFHET {
+        color: var(--color-disabled);
+    }
+    .GHS0TFHET:hover {
+        color: var(--color-hover-enabled);
+    }
+
+    /* table header */
+    .GHS0TFHFD {
+        color: var(--color-enabled);
+    }
+
+    /* table body */
+    tbody {
+        color: var(--color-hover-enabled);
+    }
+
+    input {
+        color: var(--color-hover-enabled);
     }
 }
